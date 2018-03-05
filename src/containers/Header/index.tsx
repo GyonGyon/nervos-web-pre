@@ -39,19 +39,18 @@ export default class extends React.Component<HeaderProps, HeaderState> {
     const { props } = this
     const { loaded } = this.state
     return createPortal(
-     (
-          <Header>
-            <Logo
-              src={LogoImg}
-              alt="NervOS"
-              onClick={() =>
-                props.location.pathname !== '/' && props.history.push('/')
-              }
-            />
-            <Navs>
-            </Navs>
-          </Header>
-        ),
+      (
+        <Header>
+          <Logo
+            src={LogoImg}
+            alt="NervOS"
+            onClick={() =>
+              props.location.pathname !== '/' && props.history.push('/')
+            }
+          />
+          <Navs />
+        </Header>
+      ),
       document.getElementById('header') as HTMLElement,
     )
   }

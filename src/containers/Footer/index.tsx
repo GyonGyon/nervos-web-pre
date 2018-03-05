@@ -112,11 +112,10 @@ export default class extends React.Component {
 
   Bottom = () => <div />
 
-
   render () {
     const { props, Top, Right, Bottom } = this
 
-    return createPortal([<Top/>, <Bottom/>], document.getElementById(
+    return createPortal([<Top />, <Bottom />], document.getElementById(
       'footer'
     ) as HTMLElement)
   }

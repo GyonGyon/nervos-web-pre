@@ -45,11 +45,11 @@ export default class extends React.Component {
   }
 
   People = (people) => {
-     const {image, name, desc} = people
+    const {image, name, desc} = people
     return (
       <div>
         <div>
-          <img src={image} alt=""/>
+          <img src={image} alt="" />
         </div>
         <div>
           <div>{name}</div>
@@ -63,9 +63,7 @@ export default class extends React.Component {
     const { props } = this
     const { loaded } = this.state
     return (
-      <div className={css.slogan} style={{ backgroundImage: `url(${imgs.bg}` }}>
-        
-      </div>
+      <div className={css.slogan} style={{ backgroundImage: `url(${imgs.bg}` }} />
     )
   }
 }

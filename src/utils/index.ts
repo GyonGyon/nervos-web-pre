@@ -9,4 +9,4 @@ const log = console.log.bind(console, '>>>')
 //   `${dirPath}${name}.${suffix}`
 
 // export { log, pathFile, pathCss, pathImg }
-export { log,  }
+export { log, }
