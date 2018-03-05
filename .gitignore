@@ -19,3 +19,4 @@ dist
 
 # Optional yarn error log
 yarn-error
+lib/react_manifest.json

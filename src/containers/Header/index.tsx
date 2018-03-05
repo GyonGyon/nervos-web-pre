@@ -34,12 +34,12 @@ export default class extends React.Component<HeaderProps, HeaderState> {
       this.setState(() => ({ loaded: true }))
     }, 0)
   }
+
   render () {
     const { props } = this
     const { loaded } = this.state
     return createPortal(
-      <I18n>
-        {(t, { i18n }) => (
+     (
           <Header>
             <Logo
               src={LogoImg}
@@ -49,21 +49,9 @@ export default class extends React.Component<HeaderProps, HeaderState> {
               }
             />
             <Navs>
-              {navs.map((item, index) => (
-                <NavItem key={item.path}>
-                  {item.path.startsWith('/') ? (
-                    <a href={item.path}>{t(item.label)}</a>
-                  ) : (
-                    <span onClick={() => i18n.changeLanguage(item.path)}>
-                      {t(item.label)}
-                    </span>
-                  )}
-                </NavItem>
-              ))}
             </Navs>
           </Header>
-        )}
-      </I18n>,
+        ),
       document.getElementById('header') as HTMLElement,
     )
   }

@@ -1,0 +1,36 @@
+$imgwidth: 40%;
+
+.main {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #2d325c;
+}
+
+.section {
+    width: 90%;
+    min-height: 300px;
+
+    .img {
+        display: inline-block;
+        width: $imgwidth;
+        text-align: center;
+
+        img {
+            max-height: 100%;
+        }
+    }
+    .desc {
+        display: inline-block;
+        width: 100% - $imgwidth;
+        text-align: left;
+    }
+
+    // &.limg {
+
+    // }
+
+    // &.rimg {
+
+    // }
+}
+

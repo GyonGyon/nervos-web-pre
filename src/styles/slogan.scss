@@ -1,0 +1,38 @@
+.slogan {
+  background-size: cover;
+  width: 100vw;
+  overflow-y: hidden;
+}
+
+.locale {
+  color: white;
+
+  div {
+    display: inline-block;
+
+    &.active {
+      color: green;
+    }
+  }
+
+  div ~ div {
+    &::before {
+      content: "|";
+      color: white;
+    }
+  }
+}
+
+.description {
+  display: inline-block;
+  width: 50%;
+}
+
+.sloganImg {
+  display: inline-block;
+  width: 50%;
+
+  img {
+    max-width: 100%;
+  }
+}
