@@ -103,21 +103,6 @@ export default class extends React.Component {
     )
   }
 
-  // Subscribe = () => {
-  //   let ddd
-  //   return (
-  //     <div className={css.subscribe}>
-  //       <div className={css.buttonOuter}>
-  //         <div className={css.buttonInner}>
-  //           <input type="text" placeholder="Enter your email address" />
-  //           <a className={css.label}>subscribe</a>
-  //         </div>
-  //         <div className={css.diagonal} />
-  //       </div>
-  //     </div>
-  //   )
-  // }
-
   Subscribe = () => {
     let ddd
     return (

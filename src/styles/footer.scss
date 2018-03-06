@@ -13,35 +13,119 @@
 .container {
   display: inline-block;
   text-align: left;
-  width: 80%;
-}
-
-.right {
-  display: inline-block;
-  width: 55%;
+  width: 100%;
+  padding: 0 (135vw / 19.2);
 }
 
 .left {
   display: inline-block;
   padding-left: 2rem;
-  width: 45%;
+  padding-top: (130vw / 19.2);
+  vertical-align: top;
+  width: (750vw / 19.2);
 
-//   .image {
+    .image {
+      padding-bottom: (70vw / 19.2);
+    }
 
-//   }
+    .navItem {
+      display: block;
+      margin-bottom: (25vw / 19.2);
+    }
+
+
 }
 
-.socialiconContainer {
-  text-align: center;
+.right {
   display: inline-block;
+  text-align: center;
+  padding-top: (150vw / 19.2);
+}
+
+.subscribe {
+  color: $cImportant;
+  position: relative;
+  display: inline-block;
+  width: (705vw / 19.2);
+  // bottom: (120vw / 19.2);
+  // left: (400vw / 19.2);
+
+  .buttonOuter {
+    border: 1px solid;
+    height: (85vw / 19.2);
+
+    .buttonInner {
+      border: 1px solid $cImportant;
+      color: $cNormalW;
+      font-size: (28vw / 19.2);
+      width: (690vw / 19.2);
+      height: (70vw / 19.2);
+      text-align: right;
+
+      input {
+        width: (430vw / 19.2);
+        height: 100%;
+        display: inline-block;
+        color: $cNormalW;
+        background: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: inherit;
+        }
+      }
+
+      a {
+        width: (240vw / 19.2);
+        height: 100%;
+        display: inline-block;
+        text-transform: uppercase;
+        line-height: 3.64583vw;
+        cursor: pointer;
+        background-color: $cImportant;
+        text-align: center;
+        
+        &:hover {
+          color: $cButtonHover;
+        }
+      }
+    }
+    .diagonal {
+      position: absolute;
+      width: (21.213vw / 19.2);
+      height: 1px;
+      background-color: $cImportant;
+      right: 0;
+      bottom: 0;
+      transform: rotate(45deg);
+      transform-origin: 100%;
+    }
+  }
+}
+
+
+
+.socialiconContainer {
+  padding-top: (100vw / 19.2);
+  display: inline-block;
+  
   img {
-    max-width: 100%;
+    width: (65vw / 19.2);
+    margin: 0 (30vw / 19.2);
   }
 }
 
 .bottom {
+  margin-top: (80vw / 19.2);
   display: inline-block;
   border-top: 1px solid $cNormalW;
+  padding-top: (80vw / 19.2);
+  padding-left: (55vw / 19.2);
+  padding-bottom: (160vw / 19.2);
   height: 100px;
   width: 100%;
 }

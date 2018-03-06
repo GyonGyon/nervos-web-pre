@@ -58,14 +58,10 @@ export default class extends React.Component {
   }
 
   Nav = () => (
-    <div>
+    <div className={css.nav}>
       {navList.map((nav) => {
         const { href, label, } = nav
-        return (
-          <Link to={href}>
-            {label}
-          </Link>
-        )
+        return <Link className={css.navItem} to={href}>{label}</Link>
       })}
     </div>
   )
@@ -82,7 +78,20 @@ export default class extends React.Component {
     )
   }
 
-  Subscribe = () => <div />
+  Subscribe = () => {
+    let ddd
+    return (
+      <div className={css.subscribe}>
+        <div className={css.buttonOuter}>
+          <div className={css.buttonInner}>
+            <input type="text" placeholder="Enter your email address" />
+            <a href="/" className={css.label}>subscribe</a>
+          </div>
+          <div className={css.diagonal} />
+        </div>
+      </div>
+    )
+  }
 
   SocialiconList = () => (
     <div className={css.socialiconList}>
@@ -98,8 +107,8 @@ export default class extends React.Component {
     const { SocialiconList, Subscribe, } = this
     return (
       <div className={css.right}>
-        {SocialiconList()}
-        {Subscribe()}
+        <Subscribe />
+        <SocialiconList />
       </div>
     )
   }
