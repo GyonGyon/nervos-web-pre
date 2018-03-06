@@ -111,7 +111,7 @@
       height: (90vw / 19.2);
       left: 0;
       top: 50%;
-      transform: translate(-120%);
+      transform: translate(-(274vw / 19.2));
     }
 
     &.right {
@@ -139,6 +139,11 @@
       text-transform: uppercase;
       line-height: 3.64583vw;
       background-color: $cImportant;
+      cursor: pointer;
+
+      &:hover {
+        color: $cNormalB;
+      }
     }
     .diagonal {
       position: absolute;

@@ -140,7 +140,7 @@ export default class extends React.Component {
         <Locale />
         <Description />
         <SloganImg />
-        <Subscribe />
+        {/* <Subscribe /> */}
       </div>
     )
   }

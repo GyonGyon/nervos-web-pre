@@ -5,9 +5,11 @@ $peopleImgSize: 6.25rem;
 .main {
   background-color: $cBgBlue;
   text-align: center;
+  color: $cNormalW;
 }
 
 .title {
+  font-size: (60vw / 19.2);
   color: $cImportant;
 }
 

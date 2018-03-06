@@ -46,6 +46,33 @@ export default class extends React.Component {
   }
   componentDidMount () {}
 
+  Subscribe = () => {
+    let ddd
+    return (
+      <div className={css.subscribe}>
+        <div className={`${css.line} ${css.left}`} />
+        <div className={css.buttonOuter}>
+          <div className={css.buttonInner}>subscribe</div>
+          <div className={css.diagonal} />
+        </div>
+        <div className={`${css.line} ${css.right}`} />
+      </div>
+    )
+  }
+
+  Title = (props) => {
+    const { Subscribe, } = this
+    return (
+      <div className={css.titleContainer}>
+        <div className={css.title}>
+          <Subscribe />
+          <div>Feature</div>
+        </div>
+        <div className={css.verticalLine} />
+      </div>
+    )
+  }
+
   SectionLImg = (props) => {
     const { section, } = props
     const { image, title, text, } = section
@@ -98,12 +125,14 @@ export default class extends React.Component {
   }
 
   render () {
-    const { SectionList, } = this
+    const { SectionList, Title, } = this
     const { loaded, } = this.state
     return (
       <div className={css.main}>
-        <div className={css.title}>Feature</div>
-        <SectionList />
+        <div className={css.container}>
+          <Title />
+          <SectionList />
+        </div>
       </div>
     )
   }
