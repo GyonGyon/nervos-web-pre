@@ -1,15 +1,47 @@
-.main {
-    background-color: #333;
+@import "color.scss";
+
+#footer {
+  background-color: $cBgBlack;
 }
 
-// .socialiconList {
-   
-// }
+.main {
+  background-color: $cBgBlack;
+  text-align: center;
+  color: $cNormalW;
+}
+
+.container {
+  display: inline-block;
+  text-align: left;
+  width: 80%;
+}
+
+.right {
+  display: inline-block;
+  width: 55%;
+}
+
+.left {
+  display: inline-block;
+  padding-left: 2rem;
+  width: 45%;
+
+//   .image {
+
+//   }
+}
 
 .socialiconContainer {
-    text-align: center;
-    display: inline-block;
-    img {
-        max-width: 100%;
-    }
+  text-align: center;
+  display: inline-block;
+  img {
+    max-width: 100%;
+  }
+}
+
+.bottom {
+  display: inline-block;
+  border-top: 1px solid $cNormalW;
+  height: 100px;
+  width: 100%;
 }

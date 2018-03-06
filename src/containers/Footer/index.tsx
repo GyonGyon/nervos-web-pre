@@ -1,75 +1,82 @@
 import * as React from 'react'
-import { createPortal } from 'react-dom'
-import { Header, Logo, Navs, NavItem } from '../../styled/Common'
-import { log } from '../../utils'
+import { Link, } from 'react-router-dom'
+import { createPortal, } from 'react-dom'
+import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
+import { log, } from '../../utils'
 
 const css = require('../../styles/footer')
 
 const imgs = {
-  socialicon_01: require('../../images/footer/socialicon_01.png'),
-  socialicon_02: require('../../images/footer/socialicon_02.png'),
-  socialicon_03: require('../../images/footer/socialicon_03.png'),
-  socialicon_04: require('../../images/footer/socialicon_04.png'),
-  socialicon_05: require('../../images/footer/socialicon_05.png'),
-  socialicon_06: require('../../images/footer/socialicon_06.png')
+  socialicon_01: '',
+  socialicon_02: '',
+  socialicon_03: '',
+  socialicon_04: '',
+  socialicon_05: '',
+  socialicon_06: '',
+  logo: '',
 }
-// const img_bg = require('../../images/slogan/bg.png')
+imgs.socialicon_01 = require('../../images/footer/socialicon_01.png')
+imgs.socialicon_02 = require('../../images/footer/socialicon_02.png')
+imgs.socialicon_03 = require('../../images/footer/socialicon_03.png')
+imgs.socialicon_04 = require('../../images/footer/socialicon_04.png')
+imgs.socialicon_05 = require('../../images/footer/socialicon_05.png')
+imgs.socialicon_06 = require('../../images/footer/socialicon_06.png')
+imgs.logo = require('../../images/footer/logo.png')
+
+const socialiconList = [
+  imgs.socialicon_01,
+  imgs.socialicon_02,
+  imgs.socialicon_03,
+  imgs.socialicon_04,
+  imgs.socialicon_05,
+  imgs.socialicon_06,
+]
+
+const navList = [
+  {
+    label: 'ddddd',
+    href: '/',
+  },
+  {
+    label: 'ddddd',
+    href: '/',
+  },
+  {
+    label: 'ddddd',
+    href: '/',
+  },
+]
 
 export default class extends React.Component {
-  socialiconList = [
-    imgs.socialicon_01,
-    imgs.socialicon_02,
-    imgs.socialicon_03,
-    imgs.socialicon_04,
-    imgs.socialicon_05,
-    imgs.socialicon_06
-  ]
-
-  navList = [
-    {
-      label: '',
-      href: ''
-    },
-    {
-      label: '',
-      href: ''
-    },
-    {
-      label: '',
-      href: ''
-    }
-  ]
-
-  state = {
-    loaded: false
-  }
+  // state = {
+  //   loaded: false,
+  // }
   componentDidMount () {
-    setTimeout(() => {
-      this.setState(() => ({ loaded: true }))
-    }, 0)
+    // setTimeout(() => {
+    //   this.setState(() => ({ loaded: true, }))
+    // }, 0)
   }
 
-  Nav = () => {
-    const { navList } = this
-    return (
-      <div>
-        {navList.map(nav => {
-          const { href, label } = nav
-          return (
-            <a href={href}>
-              <div>{label}</div>
-            </a>
-          )
-        })}
-      </div>
-    )
-  }
+  Nav = () => (
+    <div>
+      {navList.map((nav) => {
+        const { href, label, } = nav
+        return (
+          <Link to={href}>
+            {label}
+          </Link>
+        )
+      })}
+    </div>
+  )
 
   Left = () => {
-    const { Nav } = this
+    const { Nav, } = this
     return (
-      <div>
-        <div />
+      <div className={css.left}>
+        <div className={css.image}>
+          <img src={imgs.logo} alt="" />
+        </div>
         {Nav()}
       </div>
     )
@@ -77,23 +84,20 @@ export default class extends React.Component {
 
   Subscribe = () => <div />
 
-  SocialiconList = () => {
-    const { socialiconList } = this
-    return (
-      <div className={css.socialiconList}>
-        {socialiconList.map(image => (
-          <div className={css.socialiconContainer}>
-            <img src={image} />
-          </div>
-        ))}
-      </div>
-    )
-  }
+  SocialiconList = () => (
+    <div className={css.socialiconList}>
+      {socialiconList.map((image) => (
+        <div className={css.socialiconContainer}>
+          <img src={image} alt="" />
+        </div>
+      ))}
+    </div>
+  )
 
   Right = () => {
-    const { SocialiconList, Subscribe } = this
+    const { SocialiconList, Subscribe, } = this
     return (
-      <div>
+      <div className={css.right}>
         {SocialiconList()}
         {Subscribe()}
       </div>
@@ -101,22 +105,32 @@ export default class extends React.Component {
   }
 
   Top = () => {
-    const { props, Left, Right } = this
+    const { props, Left, Right, } = this
     return (
-      <div className="top">
+      <div className={css.top}>
         {Left()}
         {Right()}
       </div>
     )
   }
 
-  Bottom = () => <div />
+  Bottom = () => (
+    <div className={css.bottom}>
+      <div>@ 2018 Nervos All Rights Reserved</div>
+    </div>
+  )
 
   render () {
-    const { props, Top, Right, Bottom } = this
+    const { props, Top, Bottom, } = this
 
-    return createPortal([<Top />, <Bottom />], document.getElementById(
-      'footer'
-    ) as HTMLElement)
+    return createPortal(
+      <div className={css.main}>
+        <div className={css.container}>
+          <Top />
+          <Bottom />
+        </div>
+      </div>,
+      document.getElementById('footer') as HTMLElement
+    )
   }
 }

@@ -1,36 +1,49 @@
+@import "color.scss";
+
 $imgwidth: 40%;
 
 .main {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: #2d325c;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $cBgBlue;
+  color: $cNormalB;
+}
+
+.title {
+    color: $cImportant;
+}
+
+
+.sectionList {
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .section {
-    width: 90%;
-    min-height: 300px;
+  width: 90%;
+  min-height: 300px;
 
-    .img {
-        display: inline-block;
-        width: $imgwidth;
-        text-align: center;
+  .img {
+    display: inline-block;
+    width: $imgwidth;
+    text-align: center;
 
-        img {
-            max-height: 100%;
-        }
+    img {
+      max-width: 100%;
     }
-    .desc {
-        display: inline-block;
-        width: 100% - $imgwidth;
-        text-align: left;
-    }
+  }
+  .desc {
+    display: inline-block;
+    width: 100% - $imgwidth;
+    text-align: left;
+    vertical-align: top;
+  }
 
-    // &.limg {
+  // &.limg {
 
-    // }
+  // }
 
-    // &.rimg {
+  // &.rimg {
 
-    // }
+  // }
 }
-
