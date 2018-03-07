@@ -31,6 +31,11 @@
     bottom: (65vw / 19.2);
     left: (60vw / 19.2);
     display: inline-block;
+
+    .text {
+      position: relative;
+      left: 50%;
+    }
   }
   .verticalLine {
     width: 2px;
@@ -102,7 +107,7 @@
       width: (21.213vw / 19.2);
       height: 2px;
       background-color: $cImportant;
-      right: 2px;
+      right: 1px;
       bottom: 0;
       transform: rotate(45deg);
       transform-origin: 100%;

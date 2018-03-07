@@ -12,6 +12,10 @@ $peopleImgSize: 6.25rem;
 .title {
   font-size: (60vw / 19.2);
   color: $cImportant;
+  position: relative;
+  left: 163.5 * $w;
+  display: inline-block;
+  transform: translateX(-50%);
 }
 
 .container {

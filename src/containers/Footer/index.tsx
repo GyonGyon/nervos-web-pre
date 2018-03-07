@@ -1,27 +1,12 @@
 import * as React from 'react'
 import { Link, } from 'react-router-dom'
 import { createPortal, } from 'react-dom'
+import { I18n, } from 'react-i18next'
 import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
 import { log, } from '../../utils'
+import {footer as imgs, } from '../../config/imgMap'
 
 const css = require('../../styles/footer')
-
-const imgs = {
-  socialicon_01: '',
-  socialicon_02: '',
-  socialicon_03: '',
-  socialicon_04: '',
-  socialicon_05: '',
-  socialicon_06: '',
-  logo: '',
-}
-imgs.socialicon_01 = require('../../images/footer/socialicon_01.png')
-imgs.socialicon_02 = require('../../images/footer/socialicon_02.png')
-imgs.socialicon_03 = require('../../images/footer/socialicon_03.png')
-imgs.socialicon_04 = require('../../images/footer/socialicon_04.png')
-imgs.socialicon_05 = require('../../images/footer/socialicon_05.png')
-imgs.socialicon_06 = require('../../images/footer/socialicon_06.png')
-imgs.logo = require('../../images/footer/logo.png')
 
 const socialiconList = [
   imgs.socialicon_01,
@@ -32,39 +17,37 @@ const socialiconList = [
   imgs.socialicon_06,
 ]
 
-const navList = [
-  {
-    label: 'ddddd',
-    href: '/',
-  },
-  {
-    label: 'ddddd',
-    href: '/',
-  },
-  {
-    label: 'ddddd',
-    href: '/',
-  },
-]
+const navHrefList = ['/', '/', '/', ]
 
 export default class extends React.Component {
   // state = {
   //   loaded: false,
   // }
-  componentDidMount () {
-    // setTimeout(() => {
-    //   this.setState(() => ({ loaded: true, }))
-    // }, 0)
-  }
+  // componentDidMount () {
+  //   setTimeout(() => {
+  //     this.setState(() => ({ loaded: true, }))
+  //   }, 0)
+  // }
 
-  Nav = () => (
-    <div className={css.nav}>
-      {navList.map((nav) => {
-        const { href, label, } = nav
-        return <Link className={css.navItem} to={href}>{label}</Link>
-      })}
-    </div>
-  )
+  t = null as any
+  lang = null as any
+
+  Nav = () => {
+    const { t, } = this
+    const navList = t('navList', { returnObjects: true, })
+    return (
+      <div className={css.nav}>
+        {navList.map((label, i) => {
+          const href = navHrefList[i]
+          return (
+            <Link className={css.navItem} to={href}>
+              {label}
+            </Link>
+          )
+        })}
+      </div>
+    )
+  }
 
   Left = () => {
     const { Nav, } = this
@@ -73,19 +56,23 @@ export default class extends React.Component {
         <div className={css.image}>
           <img src={imgs.logo} alt="" />
         </div>
-        {Nav()}
+        <Nav />
       </div>
     )
   }
 
   Subscribe = () => {
-    let ddd
+    const { t, } = this
+    const enterMail = t('enterMail')
+    const translations = t('translations:subscribe')
     return (
       <div className={css.subscribe}>
         <div className={css.buttonOuter}>
           <div className={css.buttonInner}>
-            <input type="text" placeholder="Enter your email address" />
-            <a href="/" className={css.label}>subscribe</a>
+            <input type="text" placeholder={enterMail} />
+            <a href="/" className={css.label}>
+              {translations}
+            </a>
           </div>
           <div className={css.diagonal} />
         </div>
@@ -133,12 +120,20 @@ export default class extends React.Component {
     const { props, Top, Bottom, } = this
 
     return createPortal(
-      <div className={css.main}>
-        <div className={css.container}>
-          <Top />
-          <Bottom />
-        </div>
-      </div>,
+      <I18n ns="footer">
+        {(t, { i18n, }) => {
+          this.t = t
+          this.lang = i18n
+          return (
+            <div className={css.main}>
+              <div className={css.container}>
+                <Top />
+                <Bottom />
+              </div>
+            </div>
+          )
+        }}
+      </I18n>,
       document.getElementById('footer') as HTMLElement
     )
   }

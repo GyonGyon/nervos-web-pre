@@ -1,48 +1,13 @@
 import * as React from 'react'
 import { createPortal, } from 'react-dom'
+import { I18n, } from 'react-i18next'
 import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
 import { log, } from '../../utils'
+import {teams as imgs, } from '../../config/imgMap'
 
 const css = require('../../styles/teams')
 
-/* eslint-disable no-restricted-globals */
-const imgs = {
-  people1: '',
-  people2: '',
-  people3: '',
-  people4: '',
-}
-imgs.people1 = require('../../images/teams/1.jpg')
-imgs.people2 = require('../../images/teams/2.jpg')
-imgs.people3 = require('../../images/teams/3.jpg')
-imgs.people4 = require('../../images/teams/4.jpg')
-
-const peopleList = [
-  {
-    image: imgs.people1,
-    name: 'dududu',
-    desc:
-      'determined price; rather price is set by market demand. This mimics mining without giving potential unfair advantages to large purchasers.',
-  },
-  {
-    image: imgs.people2,
-    name: 'dududu',
-    desc:
-      'determined price; rather price is set by market demand. This mimics mining without giving potential unfair advantages to large purchasers.',
-  },
-  {
-    image: imgs.people3,
-    name: 'dududu',
-    desc:
-      'determined price; rather price is set by market demand. This mimics mining without giving potential unfair advantages to large purchasers.',
-  },
-  {
-    image: imgs.people4,
-    name: 'dududu',
-    desc:
-      'determined price; rather price is set by market demand. This mimics mining without giving potential unfair advantages to large purchasers.',
-  },
-]
+const peopleImgList = [imgs.people1, imgs.people2, imgs.people3, imgs.people4, ]
 
 export default class extends React.Component {
   state = {
@@ -54,9 +19,13 @@ export default class extends React.Component {
     }, 0)
   }
 
+  t = null as any
+  lang = null as any
+
   People = (props) => {
-    const { people, } = props
-    const { image, name, desc, } = people
+    const { people, index, } = props
+    const { name, desc, } = people
+    const image = peopleImgList[index]
     return (
       <div className={css.people}>
         <div className={css.image}>
@@ -64,28 +33,43 @@ export default class extends React.Component {
         </div>
         <div className={css.desc}>
           <div className={css.name}>{name}</div>
-          <div className={css.text}>{desc}</div>
+          <div className={css.text}>
+            {desc.map((string) => <p>{string}</p>)}
+          </div>
         </div>
       </div>
     )
   }
 
   PeopleList = (props) => {
-    const { People, } = this
-    const list = peopleList.map((people) => <People people={people} />)
-    return <div>{list}</div>
+    const { People, t, } = this
+    const peopleList = t('peopleList', { returnObjects: true, })
+    return (
+      <div>
+        {peopleList.map((people, i) => <People people={people} index={i} />)}
+      </div>
+    )
   }
 
   render () {
     const { props, PeopleList, } = this
     const { loaded, } = this.state
     return (
-      <div className={css.main}>
-        <div className={css.container}>
-          <div className={`${css.title} fontBold`}>Teams</div>
-          <PeopleList />
-        </div>
-      </div>
+      <I18n ns="teams">
+        {(t, { i18n, }) => {
+          this.t = t
+          this.lang = i18n
+          const title = t('title')
+          return (
+            <div className={css.main}>
+              <div className={css.container}>
+                <div className={`${css.title} fontBold`}>{title}</div>
+                <PeopleList />
+              </div>
+            </div>
+          )
+        }}
+      </I18n>
     )
   }
 }

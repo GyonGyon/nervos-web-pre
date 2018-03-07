@@ -3,43 +3,11 @@ import { createPortal, } from 'react-dom'
 import { I18n, } from 'react-i18next'
 import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
 import { log, } from '../../utils'
+import { features as imgs, } from '../../config/imgMap'
 
 const css = require('../../styles/features')
 
-const imgs = {
-  bg: '',
-  auto: '',
-  re: '',
-  pr: '',
-}
-imgs.bg = require('../../images/features/bg.png')
-imgs.auto = require('../../images/features/auto.png')
-imgs.re = require('../../images/features/re.png')
-imgs.pr = require('../../images/features/pr.png')
-
-const sectionList = [
-  {
-    image: imgs.auto,
-    title: 'Autonomous',
-    text: [
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam  ',
-    ],
-  },
-  {
-    image: imgs.re,
-    title: 'Autonomous',
-    text: [
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam  ',
-    ],
-  },
-  {
-    image: imgs.pr,
-    title: 'Autonomous',
-    text: [
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam  ',
-    ],
-  },
-]
+const sectionImgList = [imgs.auto, imgs.re, imgs.pr, ]
 
 export default class extends React.Component {
   state = {
@@ -51,12 +19,13 @@ export default class extends React.Component {
   lang = null as any
 
   Subscribe = () => {
-    let ddd
+    const {t, } = this
+    const subscribe = t('translations:subscribe')
     return (
       <div className={css.subscribe}>
         <div className={`${css.line} ${css.left}`} />
         <div className={css.buttonOuter}>
-          <div className={`${css.buttonInner} fontBold`}>subscribe</div>
+          <div className={`${css.buttonInner} fontBold`}>{subscribe}</div>
           <div className={css.diagonal} />
         </div>
         <div className={`${css.line} ${css.right}`} />
@@ -65,21 +34,22 @@ export default class extends React.Component {
   }
 
   Title = (props) => {
-    const { Subscribe, } = this
+    const { Subscribe, t, } = this
+    const title = t('title')
     return (
       <div className={css.titleContainer}>
         <div className={`${css.title} fontBold`}>
           <Subscribe />
-          <div>Features</div>
+          <div className={`${css.text}`}>{title}</div>
         </div>
-        {/* <div className={css.verticalLine} /> */}
       </div>
     )
   }
 
   SectionLImg = (props) => {
-    const { section, } = props
-    const { image, title, text, } = section
+    const { section, index, } = props
+    const { title, text, } = section
+    const image = sectionImgList[index]
     return (
       <section className={`${css.section} ${css.limg}`}>
         <div className={css.img}>
@@ -94,8 +64,9 @@ export default class extends React.Component {
   }
 
   SectionRImg = (props) => {
-    const { section, } = props
-    const { image, title, text, } = section
+    const { section, index, } = props
+    const { title, text, } = section
+    const image = sectionImgList[index]
     return (
       <section className={`${css.section} ${css.rimg}`}>
         <div className={css.desc}>
@@ -110,7 +81,8 @@ export default class extends React.Component {
   }
 
   SectionList = () => {
-    const { SectionRImg, SectionLImg, } = this
+    const { SectionRImg, SectionLImg, t, } = this
+    const sectionList = t('sectionList', { returnObjects: true, })
     return (
       <div className={css.sectionList}>
         <div className={`${css.verticalLine} ${css.top1}`} />
@@ -119,9 +91,9 @@ export default class extends React.Component {
         {sectionList.map(
           (section, i) =>
             i % 2 === 0 ? (
-              <SectionLImg section={section} />
+              <SectionLImg section={section} index={i} />
             ) : (
-              <SectionRImg section={section} />
+              <SectionRImg section={section} index={i} />
             )
         )}
         <div className={`${css.verticalLine} ${css.bottom1}`} />
@@ -134,7 +106,7 @@ export default class extends React.Component {
     const { SectionList, Title, } = this
     const { loaded, } = this.state
     return (
-      <I18n ns="slogan">
+      <I18n ns="features">
         {(t, { i18n, }) => {
           this.t = t
           this.lang = i18n

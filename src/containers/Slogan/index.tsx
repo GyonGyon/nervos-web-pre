@@ -4,20 +4,9 @@ import { I18n, } from 'react-i18next'
 
 import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
 import { log, } from '../../utils'
+import { slogan as imgs, } from '../../config/imgMap'
 
 const css = require('../../styles/slogan')
-
-const imgs = {
-  bg: '',
-  logo: '',
-  slogan: '',
-  quo: '',
-}
-
-imgs.bg = require('../../images/slogan/bg.png')
-imgs.logo = require('../../images/slogan/logo.png')
-imgs.slogan = require('../../images/slogan/slogan.png')
-imgs.quo = require('../../images/slogan/quo.png')
 
 const localeList = [
   {
@@ -29,7 +18,7 @@ const localeList = [
     path: 'zh',
   },
 ]
-const sloganWord = 'The Common Knowledge Base of the 7.6 Billion People.'
+// const sloganWord = 'The Common Knowledge Base of the 7.6 Billion People.'
 const sloganWordTimeout = 100
 
 export default class extends React.Component {
@@ -142,23 +131,21 @@ export default class extends React.Component {
     )
   }
 
-  SloganImg = (props) => {
-    let ddd
+  SloganImg = (props) => (
     //   需要添加动效
-    return (
-      <div className={css.sloganImg}>
-        <img src={imgs.slogan} alt="" />
-      </div>
-    )
-  }
+    <div className={css.sloganImg}>
+      <img src={imgs.slogan} alt="" />
+    </div>
+  )
 
   Subscribe = (props) => {
     const { t, lang, } = this
+    const subscribe = t('translations:subscribe')
     return (
       <div className={css.subscribe}>
         <div className={`${css.line} ${css.left}`} />
         <div className={css.buttonOuter}>
-          <div className={css.buttonInner}>subscribe</div>
+          <div className={css.buttonInner}>{subscribe}</div>
           <div className={css.diagonal} />
         </div>
         <div className={`${css.line} ${css.right}`} />
