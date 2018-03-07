@@ -82,7 +82,7 @@ export default class extends React.Component {
     return (
       <div className={css.main}>
         <div className={css.container}>
-          <div className={css.title}>Teams</div>
+          <div className={`${css.title} fontBold`}>Teams</div>
           <PeopleList />
         </div>
       </div>

@@ -74,7 +74,7 @@ export default class extends React.Component {
   Logo = () => {}
 
   SlogonWord = () => (
-    <div className={css.slogonWord}>
+    <div className={`${css.slogonWord} fontBold`}>
       <img src={imgs.quo} alt="quotation mark" />
       {this.state.slogonWord}
     </div>

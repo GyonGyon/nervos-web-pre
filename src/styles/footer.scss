@@ -1,4 +1,5 @@
 @import "color.scss";
+@import "size.scss";
 
 #footer {
   background-color: $cBgBlack;
@@ -24,16 +25,19 @@
   vertical-align: top;
   width: (750vw / 19.2);
 
-    .image {
-      padding-bottom: (70vw / 19.2);
+  .image {
+    width: 120 * $w;
+    padding-bottom: (70vw / 19.2);
+
+    img {
+      max-width: 100%;
     }
+  }
 
-    .navItem {
-      display: block;
-      margin-bottom: (25vw / 19.2);
-    }
-
-
+  .navItem {
+    display: block;
+    margin-bottom: (25vw / 19.2);
+  }
 }
 
 .right {
@@ -51,16 +55,17 @@
   // left: (400vw / 19.2);
 
   .buttonOuter {
-    border: 1px solid;
+    border: 2px solid;
     height: (85vw / 19.2);
 
     .buttonInner {
-      border: 1px solid $cImportant;
+      border: 2px solid $cImportant;
       color: $cNormalW;
       font-size: (28vw / 19.2);
       width: (690vw / 19.2);
       height: (70vw / 19.2);
       text-align: right;
+      font-family: "lucdia";
 
       input {
         width: (430vw / 19.2);
@@ -88,7 +93,7 @@
         cursor: pointer;
         background-color: $cImportant;
         text-align: center;
-        
+
         &:hover {
           color: $cButtonHover;
         }
@@ -97,9 +102,9 @@
     .diagonal {
       position: absolute;
       width: (21.213vw / 19.2);
-      height: 1px;
+      height: 2px;
       background-color: $cImportant;
-      right: 0;
+      right: 1px;
       bottom: 0;
       transform: rotate(45deg);
       transform-origin: 100%;
@@ -107,12 +112,10 @@
   }
 }
 
-
-
 .socialiconContainer {
   padding-top: (100vw / 19.2);
   display: inline-block;
-  
+
   img {
     width: (65vw / 19.2);
     margin: 0 (30vw / 19.2);
@@ -122,7 +125,7 @@
 .bottom {
   margin-top: (80vw / 19.2);
   display: inline-block;
-  border-top: 1px solid $cNormalW;
+  border-top: 2px solid $cNormalW;
   padding-top: (80vw / 19.2);
   padding-left: (55vw / 19.2);
   padding-bottom: (160vw / 19.2);

@@ -52,7 +52,7 @@ export default class extends React.Component {
       <div className={css.subscribe}>
         <div className={`${css.line} ${css.left}`} />
         <div className={css.buttonOuter}>
-          <div className={css.buttonInner}>subscribe</div>
+          <div className={`${css.buttonInner} fontBold`}>subscribe</div>
           <div className={css.diagonal} />
         </div>
         <div className={`${css.line} ${css.right}`} />
@@ -64,11 +64,11 @@ export default class extends React.Component {
     const { Subscribe, } = this
     return (
       <div className={css.titleContainer}>
-        <div className={css.title}>
+        <div className={`${css.title} fontBold`}>
           <Subscribe />
-          <div>Feature</div>
+          <div>Features</div>
         </div>
-        <div className={css.verticalLine} />
+        {/* <div className={css.verticalLine} /> */}
       </div>
     )
   }
@@ -82,8 +82,8 @@ export default class extends React.Component {
           <img src={image} alt="" />
         </div>
         <div className={css.desc}>
-          <div>{title}</div>
-          <div>{text.map((item) => <p>{item}</p>)}</div>
+          <div className={`${css.title} fontBold`}>{title}</div>
+          <div className={css.text}>{text.map((item) => <p>{item}</p>)}</div>
         </div>
       </section>
     )
@@ -95,8 +95,8 @@ export default class extends React.Component {
     return (
       <section className={`${css.section} ${css.rimg}`}>
         <div className={css.desc}>
-          <div>{title}</div>
-          <div>{text.map((item) => <p>{item}</p>)}</div>
+          <div className={`${css.title} fontBold`}>{title}</div>
+          <div className={css.text}>{text.map((item) => <p>{item}</p>)}</div>
         </div>
         <div className={css.img}>
           <img src={image} alt="" />
@@ -108,10 +108,10 @@ export default class extends React.Component {
   SectionList = () => {
     const { SectionRImg, SectionLImg, } = this
     return (
-      <div
-        className={css.sectionList}
-        style={{ backgroundImage: `url(${imgs.bg}`, }}
-      >
+      <div className={css.sectionList}>
+        <div className={`${css.verticalLine} ${css.top1}`} />
+        <div className={`${css.verticalLine} ${css.top2}`} />
+        <div className={css.border} />
         {sectionList.map(
           (section, i) =>
             i % 2 === 0 ? (
@@ -120,6 +120,8 @@ export default class extends React.Component {
               <SectionRImg section={section} />
             )
         )}
+        <div className={`${css.verticalLine} ${css.bottom1}`} />
+        <div className={`${css.verticalLine} ${css.bottom2}`} />
       </div>
     )
   }

@@ -58,11 +58,10 @@
     color: $cImportant;
     //   font-size: 60vw * (4 / (3 * 19.2));
     font-size: (60vw / 19.2);
-    font-family: "Lucida";
     position: relative;
     margin-top: (92vw / 19.2);
     margin-bottom: (67vw / 19.2);
-    width: 110%;
+    width: 120%;
     text-align: center;
 
     img {
@@ -75,7 +74,7 @@
 
   .text {
     // width: (650vw / 19.2);
-    width: 80%;
+    width: 85%;
     font-size: (24vw / 19.2);
   }
 }
