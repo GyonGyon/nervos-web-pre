@@ -41,21 +41,30 @@ export default class extends React.Component {
   }
 
   componentDidMount () {
-    const { autoRenderSloganWord, lang, } = this
+    const { autoRenderSloganWord, lang, changeLocalClickedItem, } = this
+    const { localClickedItem, } = this.state
     setTimeout(() => {
       this.setState(() => ({ loaded: true, }))
     }, 0)
     window.onload = autoRenderSloganWord
+    if (localClickedItem !== lang.language) {
+      changeLocalClickedItem(lang.language)
+    }
   }
 
   t = null as any
   lang = null as any
 
-  clickLocale = (event) => {
-    const item = event.target.dataset.localeitem
+  changeLocalClickedItem = (item) => {
     this.setState({
       localClickedItem: item,
     })
+  }
+
+  clickLocale = (event) => {
+    const { changeLocalClickedItem, } = this
+    const item = event.target.dataset.localeitem
+    changeLocalClickedItem(item)
   }
 
   Locale = (props) => {
@@ -165,9 +174,6 @@ export default class extends React.Component {
         {(t, { i18n, }) => {
           this.t = t
           this.lang = i18n
-          this.setState({
-            localClickedItem: i18n.language,
-          })
           return (
             <div
               className={css.slogan}
