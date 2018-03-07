@@ -10,3 +10,5 @@ const log = console.log.bind(console, '>>>')
 
 // export { log, pathFile, pathCss, pathImg }
 export { log, }
+
+export default {}

@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { createPortal, } from 'react-dom'
+import { I18n, } from 'react-i18next'
+
 import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
 import { log, } from '../../utils'
 
@@ -17,17 +19,24 @@ imgs.logo = require('../../images/slogan/logo.png')
 imgs.slogan = require('../../images/slogan/slogan.png')
 imgs.quo = require('../../images/slogan/quo.png')
 
-const localeList = ['english', '中文', ]
+const localeList = [
+  {
+    label: 'english',
+    path: 'en',
+  },
+  {
+    label: '中文',
+    path: 'zh',
+  },
+]
 const slogonWord = 'The Common Knowledge Base of the 7.6 Billion People.'
 const slogonWordTimeout = 100
 
 export default class extends React.Component {
   state = {
     loaded: false,
-    localClickedItem: localeList[0],
+    localClickedItem: localeList[0].label,
     slogonWord: '',
-    slogonDesc:
-      'NERVOS facilitates human collaboration on the global scale, and serves as the protocol of the new digital commonwealth. It employs an on-chain protocol governance model so that the network can evolve to maximize the welfare of all participants.',
   }
   componentDidMount () {
     const { autoRenderSlogonWord, } = this
@@ -36,6 +45,9 @@ export default class extends React.Component {
     }, 0)
     window.onload = autoRenderSlogonWord
   }
+
+  t = null as any
+  i18n = null as any
 
   autoRenderSlogonWord = () => {
     slogonWord.split('').forEach((char, i) => {
@@ -54,24 +66,26 @@ export default class extends React.Component {
     })
   }
 
-  Locale = () => {
+  Locale = (props) => {
     const { localClickedItem, } = this.state
+    const { t, i18n, } = props
     return (
       <div className={css.locale} onClick={this.clickLocale}>
-        {localeList.map((item) => (
-          <div
-            className={localClickedItem === item ? css.active : ''}
-            // data 后的似乎会自动转为小写?
-            data-localeitem={item}
-          >
-            {item}
-          </div>
-        ))}
+        {localeList.map((item) => {
+          const { path, label, } = item
+          return (
+            <div
+              className={localClickedItem === label ? css.active : ''}
+              data-localeitem={label}
+              onClick={() => i18n.changeLanguage(path)}
+            >
+              {label}
+            </div>
+          )
+        })}
       </div>
     )
   }
-
-  Logo = () => {}
 
   SlogonWord = () => (
     <div className={`${css.slogonWord} fontBold`}>
@@ -80,20 +94,21 @@ export default class extends React.Component {
     </div>
   )
 
-  Description = () => {
+  Description = (props) => {
     const { SlogonWord, } = this
+    const { t, i18n, } = props
     return (
       <div className={css.description}>
         <div className={css.image}>
           <img src={imgs.logo} alt="logo" />
         </div>
         <SlogonWord />
-        <div className={css.text}>{this.state.slogonDesc}</div>
+        <div className={css.text}>{t('desc')}</div>
       </div>
     )
   }
 
-  SloganImg = () => {
+  SloganImg = (props) => {
     let ddd
     //   需要添加动效
     return (
@@ -103,8 +118,8 @@ export default class extends React.Component {
     )
   }
 
-  Subscribe = () => {
-    let ddd
+  Subscribe = (props) => {
+    const { t, i18n, } = props
     return (
       <div className={css.subscribe}>
         <div className={`${css.line} ${css.left}`} />
@@ -121,12 +136,22 @@ export default class extends React.Component {
     const { props, Locale, Description, SloganImg, Subscribe, } = this
     const { loaded, } = this.state
     return (
-      <div className={css.slogan} style={{ backgroundImage: `url(${imgs.bg}`, }}>
-        <Locale />
-        <Description />
-        <SloganImg />
-        {/* <Subscribe /> */}
-      </div>
+      <I18n ns="slogan">
+        {(t, { i18n, }) => {
+          this.t = t
+          this.i18n = i18n
+          return (
+            <div
+              className={css.slogan}
+              style={{ backgroundImage: `url(${imgs.bg}`, }}
+            >
+              <Locale t={t} i18n={i18n} />
+              <Description t={t} i18n={i18n} />
+              <SloganImg t={t} i18n={i18n} />
+            </div>
+          )
+        }}
+      </I18n>
     )
   }
 }
