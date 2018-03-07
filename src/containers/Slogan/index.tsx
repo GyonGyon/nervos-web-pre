@@ -29,35 +29,27 @@ const localeList = [
     path: 'zh',
   },
 ]
-const slogonWord = 'The Common Knowledge Base of the 7.6 Billion People.'
-const slogonWordTimeout = 100
+const sloganWord = 'The Common Knowledge Base of the 7.6 Billion People.'
+const sloganWordTimeout = 100
 
 export default class extends React.Component {
   state = {
     loaded: false,
-    localClickedItem: localeList[0].label,
-    slogonWord: '',
+    localClickedItem: localeList[0].path,
+    sloganWord: '',
+    sloganWordLoaded: false,
   }
+
   componentDidMount () {
-    const { autoRenderSlogonWord, } = this
+    const { autoRenderSloganWord, lang, } = this
     setTimeout(() => {
       this.setState(() => ({ loaded: true, }))
     }, 0)
-    window.onload = autoRenderSlogonWord
+    window.onload = autoRenderSloganWord
   }
 
   t = null as any
-  i18n = null as any
-
-  autoRenderSlogonWord = () => {
-    slogonWord.split('').forEach((char, i) => {
-      setTimeout(() => {
-        this.setState({
-          slogonWord: this.state.slogonWord + char,
-        })
-      }, i * slogonWordTimeout)
-    })
-  }
+  lang = null as any
 
   clickLocale = (event) => {
     const item = event.target.dataset.localeitem
@@ -68,16 +60,16 @@ export default class extends React.Component {
 
   Locale = (props) => {
     const { localClickedItem, } = this.state
-    const { t, i18n, } = props
+    const { t, lang, } = this
     return (
       <div className={css.locale} onClick={this.clickLocale}>
         {localeList.map((item) => {
           const { path, label, } = item
           return (
             <div
-              className={localClickedItem === label ? css.active : ''}
-              data-localeitem={label}
-              onClick={() => i18n.changeLanguage(path)}
+              className={localClickedItem === path ? css.active : ''}
+              data-localeitem={path}
+              onClick={() => lang.changeLanguage(path)}
             >
               {label}
             </div>
@@ -87,22 +79,55 @@ export default class extends React.Component {
     )
   }
 
-  SlogonWord = () => (
-    <div className={`${css.slogonWord} fontBold`}>
-      <img src={imgs.quo} alt="quotation mark" />
-      {this.state.slogonWord}
-    </div>
-  )
+  autoRenderSloganWord = () => {
+    const { t, } = this
+
+    const promise = new Promise((resolve, reject) => {
+      t('word')
+        .split('')
+        .forEach((char, i) => {
+          setTimeout(() => {
+            this.setState({
+              sloganWord: this.state.sloganWord + char,
+            })
+          }, i * sloganWordTimeout)
+        })
+      const endTime = (t('word').length + 1) * sloganWordTimeout
+      setTimeout(() => {
+        resolve()
+      }, endTime)
+    })
+
+    promise.then(() => {
+      this.setState({
+        sloganWordLoaded: true,
+      })
+    })
+  }
+
+  SloganWord = () => {
+    const { t, } = this
+    const { sloganWordLoaded, } = this.state
+    return (
+      <div className={`${css.sloganWord} fontBold`}>
+        <img src={imgs.quo} alt="quotation mark" />
+        <span className={sloganWordLoaded ? css.hidden : ''}>
+          {this.state.sloganWord}
+        </span>
+        <span className={sloganWordLoaded ? '' : css.hidden}>{t('word')}</span>
+      </div>
+    )
+  }
 
   Description = (props) => {
-    const { SlogonWord, } = this
-    const { t, i18n, } = props
+    const { SloganWord, } = this
+    const { t, lang, } = this
     return (
       <div className={css.description}>
         <div className={css.image}>
           <img src={imgs.logo} alt="logo" />
         </div>
-        <SlogonWord />
+        <SloganWord />
         <div className={css.text}>{t('desc')}</div>
       </div>
     )
@@ -119,7 +144,7 @@ export default class extends React.Component {
   }
 
   Subscribe = (props) => {
-    const { t, i18n, } = props
+    const { t, lang, } = this
     return (
       <div className={css.subscribe}>
         <div className={`${css.line} ${css.left}`} />
@@ -139,15 +164,18 @@ export default class extends React.Component {
       <I18n ns="slogan">
         {(t, { i18n, }) => {
           this.t = t
-          this.i18n = i18n
+          this.lang = i18n
+          this.setState({
+            localClickedItem: i18n.language,
+          })
           return (
             <div
               className={css.slogan}
               style={{ backgroundImage: `url(${imgs.bg}`, }}
             >
-              <Locale t={t} i18n={i18n} />
-              <Description t={t} i18n={i18n} />
-              <SloganImg t={t} i18n={i18n} />
+              <Locale />
+              <Description />
+              <SloganImg />
             </div>
           )
         }}

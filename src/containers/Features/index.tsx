@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { createPortal, } from 'react-dom'
+import { I18n, } from 'react-i18next'
 import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
 import { log, } from '../../utils'
 
@@ -45,6 +46,9 @@ export default class extends React.Component {
     loaded: false,
   }
   componentDidMount () {}
+
+  t = null as any
+  lang = null as any
 
   Subscribe = () => {
     let ddd
@@ -130,12 +134,20 @@ export default class extends React.Component {
     const { SectionList, Title, } = this
     const { loaded, } = this.state
     return (
-      <div className={css.main}>
-        <div className={css.container}>
-          <Title />
-          <SectionList />
-        </div>
-      </div>
+      <I18n ns="slogan">
+        {(t, { i18n, }) => {
+          this.t = t
+          this.lang = i18n
+          return (
+            <div className={css.main}>
+              <div className={css.container}>
+                <Title />
+                <SectionList />
+              </div>
+            </div>
+          )
+        }}
+      </I18n>
     )
   }
 }

@@ -54,7 +54,7 @@
     }
   }
 
-  .slogonWord {
+  .sloganWord {
     color: $cImportant;
     //   font-size: 60vw * (4 / (3 * 19.2));
     font-size: (60vw / 19.2);
@@ -70,6 +70,12 @@
       max-width: (54vw / 19.2);
       transform: translate(-100%, -50%);
     }
+
+    .hidden {
+      outline: 1px solid;
+      display: none;
+    }
+
   }
 
   .text {

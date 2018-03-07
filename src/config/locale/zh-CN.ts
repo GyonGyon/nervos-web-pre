@@ -1,9 +1,9 @@
 export default {
   translations: {
-    whitepaper: '白皮书'
+    whitepaper: '白皮书',
   },
   slogan: {
-    One: 'Blockchain commonwealth of the 7.6 Billion People.',
-    desc: ''
-  }
+    word: '中文 Blockchain commonwealth of the 7.6 Billion People.',
+    desc: '中文简介',
+  },
 }
