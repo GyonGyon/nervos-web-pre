@@ -1,1 +1,7 @@
 $w: (1vw / 19.2);
+
+@media (max-width: 1920) {
+    $w: 1px;
+}
+
+$wLine: 2 * $w;

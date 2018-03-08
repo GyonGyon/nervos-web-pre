@@ -27,6 +27,8 @@ export default class extends React.Component {
     localClickedItem: localeList[0].path,
     sloganWord: '',
     sloganWordLoaded: false,
+    actionLittleImgCss: '',
+    actionBigImgCss: '',
   }
 
   componentDidMount () {
@@ -91,6 +93,19 @@ export default class extends React.Component {
           }, i * sloganWordTimeout)
         })
       const endTime = (t('word').length + 1) * sloganWordTimeout
+      this.setState({
+        actionBigImgCss: css.actionBefore,
+      })
+      setTimeout(() => {
+        this.setState({
+          actionLittleImgCss: css.actionBefore,
+        })
+        setTimeout(() => {
+          this.setState({
+            actionLittleImgCss: `${css.actionBefore} ${css.action}`,
+          })
+        }, 100)
+      }, 2000)
       setTimeout(() => {
         resolve()
       }, endTime)
@@ -131,12 +146,54 @@ export default class extends React.Component {
     )
   }
 
-  SloganImg = (props) => (
-    //   需要添加动效
-    <div className={css.sloganImg}>
-      <img src={imgs.slogan} alt="" />
-    </div>
-  )
+  SloganImg = (props) => {
+    const { actionBigImgCss, actionLittleImgCss, } = this.state
+    return (
+      //   需要添加动效
+      <div className={css.sloganImg}>
+        <img
+          className={`${css.n1} ${css.little} ${actionLittleImgCss}`}
+          src={imgs.action1}
+          alt=""
+        />
+        <img
+          className={`${css.n2} ${css.little} ${actionLittleImgCss}`}
+          src={imgs.action2}
+          alt=""
+        />
+        <img
+          className={`${css.n3} ${css.little} ${actionLittleImgCss}`}
+          src={imgs.action3}
+          alt=""
+        />
+        <img
+          className={`${css.n4} ${css.little} ${actionLittleImgCss}`}
+          src={imgs.action4}
+          alt=""
+        />
+        <img
+          className={`${css.n5} ${css.little} ${actionLittleImgCss}`}
+          src={imgs.action5}
+          alt=""
+        />
+        <img
+          className={`${css.n6} ${css.little} ${actionLittleImgCss}`}
+          src={imgs.action6}
+          alt=""
+        />
+        <img
+          className={`${css.n7} ${css.little} ${actionLittleImgCss}`}
+          src={imgs.action7}
+          alt=""
+        />
+        <img
+          className={`${css.big} ${actionBigImgCss}`}
+          src={imgs.slogan}
+          alt=""
+        />
+      </div>
+    )
+  }
 
   Subscribe = (props) => {
     const { t, lang, } = this

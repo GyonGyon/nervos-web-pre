@@ -3,12 +3,28 @@ const slogan = {
   logo: '',
   slogan: '',
   quo: '',
+
+  action1: '',
+  action2: '',
+  action3: '',
+  action4: '',
+  action5: '',
+  action6: '',
+  action7: '',
 }
 
 slogan.bg = require('../images/slogan/bg.png')
 slogan.logo = require('../images/slogan/logo.png')
 slogan.slogan = require('../images/slogan/slogan.png')
 slogan.quo = require('../images/slogan/quo.png')
+
+slogan.action1 = require('../images/slogan/action1.png')
+slogan.action2 = require('../images/slogan/action2.png')
+slogan.action3 = require('../images/slogan/action3.png')
+slogan.action4 = require('../images/slogan/action4.png')
+slogan.action5 = require('../images/slogan/action5.png')
+slogan.action6 = require('../images/slogan/action6.png')
+slogan.action7 = require('../images/slogan/action7.png')
 
 const features = {
   bg: '',

@@ -17,8 +17,19 @@ a {
   text-decoration: none;
 }
 
+// html {
+//   font-size: (1vw / 19.2);
+// }
+
+// @media (min-width: 1920) {
+//   html {
+//     font-size: 1px;
+//   }
+// }
+
 body {
   font-family: "lucdia";
+  // text-align: center;
 }
 
 :global {

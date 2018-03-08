@@ -10,7 +10,7 @@ $peopleImgSize: 6.25rem;
 }
 
 .title {
-  font-size: (60vw / 19.2);
+  font-size: 60 * $w;
   color: $cImportant;
   position: relative;
   left: 163.5 * $w;
@@ -39,7 +39,7 @@ $peopleImgSize: 6.25rem;
     img {
       width: $peopleImgSize;
       height: $peopleImgSize;
-      max-width: 100%;
+      width: 100%;
       border-radius: 50%;
     }
   }
