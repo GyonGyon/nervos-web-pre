@@ -119,6 +119,7 @@
   background-color: $cNormalW;
   position: relative;
   padding-top: 70 * $w;
+  padding-bottom: 130 * $w;
   width: 1735 * $w;
 
   .border {
@@ -150,7 +151,7 @@
     }
 
     &.bottom1 {
-      height: 190 * $w;
+      height: 228 * $w;
       left: 256 * $w;
       bottom: 0;
       background-color: $cLineFeaturesInner;
@@ -166,7 +167,6 @@
 }
 
 .section {
-  min-height: 300px;
 
   .img {
     display: inline-block;
@@ -208,6 +208,7 @@
       padding-right: 220 * $w;
     }
     .img {
+      padding-left: 19 * $w;
       width: 600 * $w;
       text-align: right;
     }
@@ -220,6 +221,7 @@
       padding-right: 145 * $w;
     }
     .img {
+      padding-right: 90 * $w;
       width: 660 * $w;
       text-align: left;
     }
