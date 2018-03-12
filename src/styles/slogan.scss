@@ -64,7 +64,7 @@
     margin-top: 92 * $w;
     margin-bottom: 67 * $w;
     width: 120%;
-    text-align: center;
+    text-align: left;
 
     img {
       position: absolute;
@@ -82,6 +82,7 @@
   .text {
     // width: 650 * $w;
     width: 85%;
+    line-height: 40 * $w;
     font-size: 24 * $w;
   }
 }

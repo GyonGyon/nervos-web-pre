@@ -19,7 +19,7 @@ const localeList = [
   },
 ]
 // const sloganWord = 'The Common Knowledge Base of the 7.6 Billion People.'
-const sloganWordTimeout = 100
+const sloganWordTimeout = 1500
 
 export default class extends React.Component {
   state = {
@@ -83,16 +83,17 @@ export default class extends React.Component {
     const { t, } = this
 
     const promise = new Promise((resolve, reject) => {
-      t('word')
-        .split('')
-        .forEach((char, i) => {
-          setTimeout(() => {
-            this.setState({
-              sloganWord: this.state.sloganWord + char,
-            })
-          }, i * sloganWordTimeout)
-        })
-      const endTime = (t('word').length + 1) * sloganWordTimeout
+      const word = t('word').split('')
+      const len = word.length
+      const onetime = sloganWordTimeout / len
+      word.forEach((char, i) => {
+        setTimeout(() => {
+          this.setState({
+            sloganWord: this.state.sloganWord + char,
+          })
+        }, i * onetime)
+      })
+      // const endTime = (t('word').length + 1) * sloganWordTimeout
       this.setState({
         actionBigImgCss: css.actionBefore,
       })
@@ -108,7 +109,7 @@ export default class extends React.Component {
       }, 2000)
       setTimeout(() => {
         resolve()
-      }, endTime)
+      }, sloganWordTimeout)
     })
 
     promise.then(() => {
