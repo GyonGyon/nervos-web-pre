@@ -89,7 +89,7 @@
         }
       }
 
-      a {
+      .label {
         width: 35.8%;
         height: 100%;
         display: inline-block;
@@ -99,6 +99,9 @@
         background-color: $cImportant;
         text-align: center;
         vertical-align: top;
+        padding: 0;
+        border: 0;
+        color: $cNormalW;
 
         &:hover {
           color: $cButtonHover;
@@ -236,7 +239,7 @@
           }
         }
 
-        a {
+        .label {
           width: 35.8%;
           height: 100%;
           display: inline-block;

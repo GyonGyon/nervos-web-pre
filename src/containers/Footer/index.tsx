@@ -86,12 +86,21 @@ export default class extends React.Component {
     return (
       <div className={css.subscribe}>
         <div className={css.buttonOuter}>
-          <div className={css.buttonInner}>
-            <input type="text" placeholder={enterMail} />
-            <a href="/" className={css.label}>
-              {translations}
-            </a>
-          </div>
+          <form
+            className="sc-fBuWsC eeihxG"
+            action="https://ezcook.us17.list-manage.com/subscribe/post?u=6b6750d23d175a99aa207330c&amp;id=405f6d7e8b"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            target="_blank"
+          >
+            <div className={css.buttonInner}>
+              <input type="text" placeholder={enterMail} name="EMAIL" />
+              <button className={css.label} type="submit">
+                {translations}
+              </button>
+            </div>
+          </form>
           <div className={css.diagonal} />
         </div>
       </div>
