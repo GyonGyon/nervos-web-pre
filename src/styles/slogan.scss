@@ -23,19 +23,19 @@
     text-transform: uppercase;
 
     &.active {
-      color: green;
+      color: $cImportant;
     }
   }
 
   div:first-child {
-    padding-right: 1rem;
+    padding-right: 12 * $w;
   }
 
   div ~ div {
     &::before {
       content: "|";
-      color: white;
-      padding-right: 1rem;
+      color: $cNormalW;
+      padding-right: 12 * $w;
     }
   }
 }

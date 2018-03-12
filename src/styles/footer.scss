@@ -55,11 +55,13 @@
   // left: 400 * $w;
 
   .buttonOuter {
-    border: 2px solid;
+    border: 2 * $w solid;
     height: 85 * $w;
 
     .buttonInner {
-      border: 2px solid $cImportant;
+      border: 2 * $w solid $cImportant;
+      border-left: none;
+      border-top: none;
       color: $cNormalW;
       font-size: 28 * $w;
       width: 690 * $w;
@@ -101,13 +103,14 @@
     }
     .diagonal {
       position: absolute;
-      width: (21.213vw / 19.2);
-      height: 2px;
+      width: 21 * $w;
+      height: $wLine;
       background-color: $cImportant;
-      right: 1px;
-      bottom: 0;
+      // background-color: red;
+      right: -6 * $w;
+      bottom: 15 * $w;
       transform: rotate(45deg);
-      transform-origin: 100%;
+      transform-origin: 0 0;
     }
   }
 }
@@ -125,10 +128,10 @@
 .bottom {
   margin-top: 80 * $w;
   display: inline-block;
-  border-top: 2px solid $cNormalW;
+  border-top: 2 * $w solid $cImportant;
   padding-top: 80 * $w;
   padding-left: 55 * $w;
   padding-bottom: 160 * $w;
-  height: 100px;
+  // height: 100px;
   width: 100%;
 }

@@ -3,6 +3,7 @@ import {footer, } from '../imgMap'
 export default {
   translations: {
     whitepaper: 'White Paper',
+    whitepaperHref: '',
     subscribe: 'subscribe',
   },
   slogan: {

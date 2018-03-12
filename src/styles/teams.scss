@@ -1,7 +1,7 @@
 @import "color.scss";
 @import "size.scss";
 
-$peopleImgSize: 6.25rem;
+$peopleImgSize: 190 * $w;
 
 .main {
   background-color: $cBgBlue;
@@ -13,13 +13,14 @@ $peopleImgSize: 6.25rem;
   font-size: 60 * $w;
   color: $cImportant;
   position: relative;
-  left: 163.5 * $w;
+  left: 100 * $w;
   display: inline-block;
   transform: translateX(-50%);
 }
 
 .container {
-  width: 80%;
+  width: 1432 * $w;
+  // padding-left: 163.5 * $w;
   display: inline-block;
   text-align: left;
   padding-bottom: 190 * $w;
@@ -28,25 +29,28 @@ $peopleImgSize: 6.25rem;
 .people {
   display: inline-block;
   width: 50%;
-  padding: 2rem 1.25rem 2rem 0;
+  padding: 57 * $w 0 95 * $w 0;
 
   .image {
     display: inline-block;
     width: $peopleImgSize;
     text-align: center;
-    margin-right: 2rem;
+    margin-right: 64 * $w;
+    vertical-align: top;
 
     img {
       width: $peopleImgSize;
       height: $peopleImgSize;
-      width: 100%;
       border-radius: 50%;
+      border: 5 * $w $cImportant solid;
     }
   }
 
   .desc {
     display: inline-block;
-    width: 60%;
+    width: 412 * $w;
+    font-size: 24 * $w;
+    line-height: 40 * $w;
 
     .name {
       color: $cImportant;

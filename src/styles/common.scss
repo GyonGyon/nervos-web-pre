@@ -1,3 +1,5 @@
+@import 'size.scss';
+
 @font-face {
   font-family: "lucdia";
   src: url("./fonts/Lucida Sans Unicode.ttf");
@@ -29,6 +31,8 @@ a {
 
 body {
   font-family: "lucdia";
+  font-size: 24 * $w;
+  // line-height: 40 * $w;
   // text-align: center;
 }
 

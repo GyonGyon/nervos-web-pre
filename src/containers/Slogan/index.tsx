@@ -18,13 +18,13 @@ const localeList = [
     path: 'zh',
   },
 ]
+const localePathList = ['en', 'zh', ]
 // const sloganWord = 'The Common Knowledge Base of the 7.6 Billion People.'
 const sloganWordTimeout = 1500
 
 export default class extends React.Component {
   state = {
     loaded: false,
-    localClickedItem: localeList[0].path,
     sloganWord: '',
     sloganWordLoaded: false,
     actionLittleImgCss: '',
@@ -32,42 +32,30 @@ export default class extends React.Component {
   }
 
   componentDidMount () {
-    const { autoRenderSloganWord, lang, changeLocalClickedItem, } = this
-    const { localClickedItem, } = this.state
+    const { autoRenderSloganWord, lang, } = this
     setTimeout(() => {
       this.setState(() => ({ loaded: true, }))
     }, 0)
     window.onload = autoRenderSloganWord
-    if (localClickedItem !== lang.language) {
-      changeLocalClickedItem(lang.language)
+    if (!localePathList.includes(lang.language)) {
+      lang.changeLanguage('en')
     }
   }
 
   t = null as any
-  lang = null as any
-
-  changeLocalClickedItem = (item) => {
-    this.setState({
-      localClickedItem: item,
-    })
-  }
-
-  clickLocale = (event) => {
-    const { changeLocalClickedItem, } = this
-    const item = event.target.dataset.localeitem
-    changeLocalClickedItem(item)
-  }
+  lang = {
+    language: '',
+  } as any
 
   Locale = (props) => {
-    const { localClickedItem, } = this.state
     const { t, lang, } = this
     return (
-      <div className={css.locale} onClick={this.clickLocale}>
+      <div className={css.locale} >
         {localeList.map((item) => {
           const { path, label, } = item
           return (
             <div
-              className={localClickedItem === path ? css.active : ''}
+              className={lang.language === path ? css.active : ''}
               data-localeitem={path}
               onClick={() => lang.changeLanguage(path)}
             >

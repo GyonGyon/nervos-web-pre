@@ -1,6 +1,7 @@
 export default {
   translations: {
     whitepaper: '白皮书',
+    whitepaperHref: '',
     subscribe: '订阅',
   },
   slogan: {

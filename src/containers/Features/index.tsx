@@ -19,13 +19,18 @@ export default class extends React.Component {
   lang = null as any
 
   Subscribe = () => {
-    const {t, } = this
-    const subscribe = t('translations:subscribe')
+    const { t, } = this
+    // const subscribe = t('translations:subscribe')
+    const subscribe = t('translations:whitepaper')
+    const href = t('translations:whitepaperHref')
     return (
       <div className={css.subscribe}>
         <div className={`${css.line} ${css.left}`} />
         <div className={css.buttonOuter}>
-          <div className={`${css.buttonInner} fontBold`}>{subscribe}</div>
+          <a href={href}>
+            <div className={`${css.buttonInner} fontBold`}>{subscribe}</div>
+          </a>
+
           <div className={css.diagonal} />
         </div>
         <div className={`${css.line} ${css.right}`} />
