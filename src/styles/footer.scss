@@ -189,7 +189,8 @@
   .right {
     display: inline-block;
     text-align: center;
-    padding-top: 150 * $w;
+    // padding-top: 0 * $w;
+    padding-top: 0;
   }
 
   .subscribe {
