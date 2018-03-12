@@ -13,7 +13,7 @@ dll
 lib
 
 # Build
-
+dist
 
 # Optional npm cache directory
 .npm
