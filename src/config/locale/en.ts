@@ -3,7 +3,7 @@ import { footer, } from '../imgMap'
 export default {
   translations: {
     whitepaper: 'White Paper',
-    whitepaperHref: '',
+    whitepaperHref: 'wp',
     subscribe: 'subscribe',
   },
   slogan: {
@@ -15,21 +15,21 @@ export default {
     title: 'Features',
     sectionList: [
       {
-        title: 'Autonomous',
+        title: 'COMMON KNOWLEDGE BASE',
         text: [
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam  ',
+          'NERVOS 针对共同知识做了更泛化的抽象，比特币的 UTXO 模型 和 以太坊 Account 模型， 都可以在此泛化抽象之上轻松实现出来。 NERVOS 不在只是 『共享账本』， 而是真正意义上的 『共同知识库』。',
         ],
       },
       {
-        title: 'Autonomous',
+        title: 'BUILT-IN IDENTITY',
         text: [
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam  ',
+          'In NERVOS, individuals and businesses can control their identities directly on the protocol layer, independent of any applications. Identities are critical for the expression of property right, which is the foundation of commerce.',
         ],
       },
       {
-        title: 'Autonomous',
+        title: 'PRACTICAL',
         text: [
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam  ',
+          'To reach NERVOS’ goal of serving real people and businesses, we have to make practical choices to integrate with today’s financial and commercial infrastructure. We provide protocol layer stable currency for price certainty and KYC & AML solutions for businesses to meet compliance requirements.',
         ],
       },
     ],
@@ -64,7 +64,21 @@ export default {
     ],
   },
   footer: {
-    navList: ['Privacy Policy', 'Contact Us', 'FAQ', ],
+    // navList: ['Privacy Policy', 'Contact Us', 'FAQ', ],
+    navList: [
+      {
+        label: 'Privacy Policy',
+        href: 'pp',
+      },
+      {
+        label: 'Contact Us',
+        href: 'cu',
+      },
+      {
+        label: 'FAQ',
+        href: 'faq',
+      },
+    ],
     enterMail: 'Enter your email address',
   },
 }

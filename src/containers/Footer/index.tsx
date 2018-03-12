@@ -4,17 +4,35 @@ import { createPortal, } from 'react-dom'
 import { I18n, } from 'react-i18next'
 import { Header, Logo, Navs, NavItem, } from '../../styled/Common'
 import { log, } from '../../utils'
-import {footer as imgs, } from '../../config/imgMap'
+import { footer as imgs, } from '../../config/imgMap'
 
 const css = require('../../styles/footer')
 
 const socialiconList = [
-  imgs.socialicon_01,
-  imgs.socialicon_02,
-  imgs.socialicon_03,
-  imgs.socialicon_04,
-  imgs.socialicon_05,
-  imgs.socialicon_06,
+  {
+    img: imgs.socialicon_01,
+    href: 'social',
+  },
+  {
+    img: imgs.socialicon_02,
+    href: 'social',
+  },
+  {
+    img: imgs.socialicon_03,
+    href: 'social',
+  },
+  {
+    img: imgs.socialicon_04,
+    href: 'social',
+  },
+  {
+    img: imgs.socialicon_05,
+    href: 'social',
+  },
+  {
+    img: imgs.socialicon_06,
+    href: 'social',
+  },
 ]
 
 const navHrefList = ['/', '/', '/', ]
@@ -37,11 +55,11 @@ export default class extends React.Component {
     const navList = t('navList', { returnObjects: true, })
     return (
       <div className={css.nav}>
-        {navList.map((label, i) => {
+        {navList.map((item, i) => {
           const href = navHrefList[i]
           return (
-            <Link className={css.navItem} to={href}>
-              {label}
+            <Link className={css.navItem} to={item.href}>
+              {item.label}
             </Link>
           )
         })}
@@ -82,9 +100,11 @@ export default class extends React.Component {
 
   SocialiconList = () => (
     <div className={css.socialiconList}>
-      {socialiconList.map((image) => (
+      {socialiconList.map((item) => (
         <div className={css.socialiconContainer}>
-          <img src={image} alt="" />
+          <a href={item.href}>
+            <img src={item.img} alt="" />
+          </a>
         </div>
       ))}
     </div>
