@@ -41,3 +41,10 @@ body {
     font-family: "myrida";
   }
 }
+
+@media (max-width: 1080px) {
+  $w: (1vw / 10.8);
+  // body {
+  //   // font-size: 24 * $w;
+  // }
+}

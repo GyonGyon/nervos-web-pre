@@ -64,7 +64,7 @@ export default {
     ],
   },
   footer: {
-    navList: ['ddddd', 'ddddd', 'ddddd', ],
+    navList: ['Privacy Policy', 'Contact Us', 'FAQ', ],
     enterMail: 'Enter your email address',
   },
 }
